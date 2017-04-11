@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+
+	<script src="js/third_party/three.js/three.min.js"></script>
+	<script src="js/artoolkit.debug.js"></script>
+	<script src="js/artoolkit.api.js"></script>
+</head>
+<body>
+
+
+
+
+<script>
+
+var cameraParam = new ARCameraParam();
+cameraParam.onload = function() {
+
+	arController = new ARController(320, 240, cameraParam);
+	arController._initNFT();
+	arController.debugSetup();
+	console.log('debugSetup');
+	arController.loadNFTMarker('DataNFT/freedom', function(markerId) {
+		console.log('Created NFT marker', arguments);
+	});
+
+};
+cameraParam.load('Data/camera_para.dat');
+
+
+</script>
+
+</body>
+</html>

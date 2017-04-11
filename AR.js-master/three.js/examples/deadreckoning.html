@@ -4,14 +4,15 @@
 <script src='vendor/three.js/build/three.js'></script>
 <script src="vendor/three.js/examples/js/libs/stats.min.js"></script>
 <!-- jsartookit -->
-<script src="../vendor/jsartoolkit5/build/artoolkit.min.js"></script>
-<script src="../vendor/jsartoolkit5/js/artoolkit.api.js"></script>
+<script src="../vendor/jsartoolkit5/build/nft/artoolkit.nft.min.js"></script>
+<script src="../vendor/jsartoolkit5/js/artoolkit.nft.api.js"></script>
+<script src="../vendor/jsartoolkit5/js/artoolkit.nft.three.js"></script>
 <!-- include threex.artoolkit -->
 <script src="../threex-artoolkitsource.js"></script>
 <script src="../threex-artoolkitcontext.js"></script>
 <script src="../threex-artoolkitprofile.js"></script>
-<script src="../threex-armarkercontrols.js"></script>
-<script src="../threex-armarkercontrols.js"></script>
+<script src="../threex-armarkercontrols-nft.js"></script>
+
 <script src="deadreckoning/threex-deadreckoningcontrols.js"></script>
 <script>THREEx.ArToolkitContext.baseURL = '../'</script>
 
@@ -68,7 +69,7 @@
 		
 		// to read from an image
 		// sourceType : 'image',
-		// sourceUrl : '../../data/images/img.jpg',		
+		// sourceUrl : '../../data/images/img.jpg',
 
 		// to read from a video
 		// sourceType : 'video',
@@ -115,7 +116,7 @@
 	////////////////////////////////////////////////////////////////////////////////
 	//          Create a ArMarkerControls
 	////////////////////////////////////////////////////////////////////////////////
-	
+
 	var markerRoot = new THREE.Group
 	scene.add(markerRoot)
 
