@@ -1257,7 +1257,6 @@
 				mandatory: constraints
 		  	}
 		};
-		console.log("artoolkit.api.js 1193  false: "+ JSON.stringify(false, null, 4));
 		//if ( false ) {
 		if ( navigator.mediaDevices || window.MediaStreamTrack) {
 			if (navigator.mediaDevices) {
@@ -1300,7 +1299,7 @@
 
 		navigator.mediaDevices.enumerateDevices().then(function(devices) {
 			// define getUserMedia() constraints
-			var mediaDevicesConstraints = {
+			/*var mediaDevicesConstraints = {
 				audio: false,
 				video: {
 					mandatory: {
@@ -1308,7 +1307,7 @@
 						maxHeight: _this.parameters.sourceHeight
 					}
 				}
-			}
+			}*/
 
 			devices.forEach(function(device) {
 				if( device.kind !== 'videoinput' )	return
