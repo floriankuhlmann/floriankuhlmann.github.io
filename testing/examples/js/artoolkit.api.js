@@ -1297,7 +1297,7 @@
 				onError('navigator.getUserMedia is not supported on your browser');
 			}
 		}
-
+		console.log("artoolkit.api.js MediaStreamTrack.getSources: "+ JSON.stringify(navigator.getUserMedia, null, 4));
 		return video;
 	};
 
