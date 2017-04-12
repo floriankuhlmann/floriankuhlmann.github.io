@@ -1261,11 +1261,13 @@
 		//if ( false ) {
 		if ( navigator.mediaDevices || window.MediaStreamTrack) {
 			if (navigator.mediaDevices) {
+				console.log("artoolkit.api.js navigator.mediaDevices: "+ JSON.stringify(mediaDevicesConstraints, null, 4));
 				navigator.mediaDevices.getUserMedia({
 					audio: false,
 					video: mediaDevicesConstraints
 				}).then(success, onError); 
 			} else {
+				console.log("artoolkit.api.js MediaStreamTrack.getSources: "+ JSON.stringify(mediaDevicesConstraints, null, 4));
 				MediaStreamTrack.getSources(function(sources) {
 					var facingDir = mediaDevicesConstraints.facingMode;
 					if (facing && facing.exact) {
