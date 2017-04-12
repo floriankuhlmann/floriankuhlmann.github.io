@@ -92,7 +92,7 @@ window.ARThreeOnLoad = function() {
 			materialArray.push(new THREE.MeshNormalMaterial({transparent : true, opacity: 0.5, side: THREE.DoubleSide}));
 			materialArray.push(new THREE.MeshNormalMaterial({transparent : true, opacity: 0.5, side: THREE.DoubleSide}));
 			materialArray.push(new THREE.MeshNormalMaterial({transparent : true, opacity: 0.5, side: THREE.DoubleSide}));
-			materialArray.push(new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( 'images/transformation_of_thinking_text.jpg' ), transparent: true, opacity: 0.75, color: 0xFFFFFF }));
+			materialArray.push(new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( 'images/networked_society_text.jpg' ), transparent: true, opacity: 0.75, color: 0xFFFFFF }));
 			materialArray.push(new THREE.MeshNormalMaterial({transparent : true, opacity: 0.5, side: THREE.DoubleSide}));
 			var MovingCubeMat = new THREE.MeshFaceMaterial(materialArray);
 			var MovingCubeGeom = new THREE.CubeGeometry( 1, 1, 1, 1, 1, 1, materialArray );
@@ -119,7 +119,7 @@ window.ARThreeOnLoad = function() {
 
 
 
-		arController.loadNFTMarker('DataNFT/bildelemente_A4', function(markerId) {
+		arController.loadNFTMarker('DataNFT/networked_society', function(markerId) {
 			var markerRoot = arController.createThreeNFTMarker(markerId);
 
 			markerRoot.add( sphere );
