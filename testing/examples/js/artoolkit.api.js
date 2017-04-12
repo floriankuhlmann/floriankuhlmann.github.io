@@ -1190,7 +1190,7 @@
 				onSuccess(video);
 			}
 		};
-
+		console.log("artoolkit.api.js 1193 configuation: "+ JSON.stringify(configuration, null, 4));
 		var readyToPlay = false;
 		var eventNames = [
 			'touchstart', 'touchend', 'touchmove', 'touchcancel',
@@ -1347,7 +1347,7 @@
 		}
 		var onSuccess = configuration.onSuccess;
 		var cameraParamURL = configuration.cameraParam;
-
+		console.log("artoolkit.api.js 1350 configuation.width: "+ configuration.width);
 		obj.onSuccess = function() {
 			new ARCameraParam(cameraParamURL, function() {
 				var arCameraParam = this;

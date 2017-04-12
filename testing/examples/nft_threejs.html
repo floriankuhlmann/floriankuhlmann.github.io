@@ -33,6 +33,7 @@ html,body {
 <script src="js/third_party/three.js/three.module.js"></script>
 <script src='js/third_party/three.js/geometry.js'></script>
 <script src="js/artoolkit.min.js"></script>
+<script src="js/artoolkit.api.js"></script>
 <script src="js/artoolkit.three.js"></script>
 
 <script>
@@ -42,6 +43,7 @@ window.ARThreeOnLoad = function() {
 	ARController.getUserMediaThreeScene({
 		maxARVideoSize: 320,
 		cameraParam: 'Data/camera_para.dat',
+		facingMode: 'environment',
 		onSuccess: function(arScene, arController, arCamera) {
 
 		document.body.className = arController.orientation;
@@ -82,14 +84,16 @@ window.ARThreeOnLoad = function() {
 				side: THREE.DoubleSide
 			});
 
+			new THREE.MeshNormalMaterial({transparent : true, opacity: 0.5, side: THREE.DoubleSide});
+
 
 			var materialArray = [];
-			materialArray.push(new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( 'images/freedominabox_2.png' ), transparent: true, opacity: 1, color: 0xFFFFFF }));
-			materialArray.push(new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( 'images/freedominabox_2.png' ), transparent: true, opacity: 1, color: 0xFFFFFF }));
-			materialArray.push(new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( 'images/freedominabox_2.png' ), transparent: true, opacity: 1, color: 0xFFFFFF }));
-			materialArray.push(new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( 'images/freedominabox_2.png' ), transparent: true, opacity: 1, color: 0xFFFFFF }));
-			materialArray.push(new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( 'images/freedominabox_2.png' ), transparent: true, opacity: 1, color: 0xFFFFFF }));
-			materialArray.push(new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( 'images/freedominabox_2.png' ), transparent: true, opacity: 1, color: 0xFFFFFF }));
+			materialArray.push(new THREE.MeshNormalMaterial({transparent : true, opacity: 0.5, side: THREE.DoubleSide}));
+			materialArray.push(new THREE.MeshNormalMaterial({transparent : true, opacity: 0.5, side: THREE.DoubleSide}));
+			materialArray.push(new THREE.MeshNormalMaterial({transparent : true, opacity: 0.5, side: THREE.DoubleSide}));
+			materialArray.push(new THREE.MeshNormalMaterial({transparent : true, opacity: 0.5, side: THREE.DoubleSide}));
+			materialArray.push(new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( 'images/freedominabox_2.jpg' ), transparent: true, opacity: 0.75, color: 0xFFFFFF }));
+			materialArray.push(new THREE.MeshNormalMaterial({transparent : true, opacity: 0.5, side: THREE.DoubleSide}));
 			var MovingCubeMat = new THREE.MeshFaceMaterial(materialArray);
 			var MovingCubeGeom = new THREE.CubeGeometry( 1, 1, 1, 1, 1, 1, materialArray );
 			var sphere = new THREE.Mesh( MovingCubeGeom, MovingCubeMat );

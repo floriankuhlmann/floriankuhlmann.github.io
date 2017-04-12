@@ -40,7 +40,7 @@
 			for (var i in configuration) {
 				obj[i] = configuration[i];
 			}
-
+			console.log("artoolkit.three.js configuation.width: "+ configuration.width);
 			var onSuccess = configuration.onSuccess;
 
 			obj.onSuccess = function(arController, arCameraParam) {
