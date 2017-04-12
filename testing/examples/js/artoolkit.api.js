@@ -1257,9 +1257,9 @@
 				mandatory: constraints
 		  	}
 		};
-
-		if ( false ) {
-		// if ( navigator.mediaDevices || window.MediaStreamTrack) {
+		console.log("artoolkit.api.js 1193  false: "+ JSON.stringify(false, null, 4));
+		//if ( false ) {
+		if ( navigator.mediaDevices || window.MediaStreamTrack) {
 			if (navigator.mediaDevices) {
 				navigator.mediaDevices.getUserMedia({
 					audio: false,
