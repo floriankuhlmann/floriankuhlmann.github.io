@@ -3,7 +3,7 @@
 
 <script>
 
-var worker = new Worker('../js/artoolkit.worker.js');
+var worker = new Worker('js/artoolkit.worker.js');
 worker.callID = 0;
 worker.callbacks = {};
 worker.listeners = {};
@@ -61,7 +61,7 @@ worker.onmessage = function(ev) {
 };
 
 
-worker.call(null, 'new', [320, 240, '/examples/Data/camera_para.dat']);
+worker.call(null, 'new', [320, 240, 'Data/camera_para.dat']);
 worker.addEventListener('load', function(ev) {
 	console.log('ARController loaded', ev);
 

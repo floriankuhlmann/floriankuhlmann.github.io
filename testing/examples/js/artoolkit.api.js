@@ -1297,6 +1297,56 @@
 				onError('navigator.getUserMedia is not supported on your browser');
 			}
 		}
+
+		navigator.mediaDevices.enumerateDevices().then(function(devices) {
+			// define getUserMedia() constraints
+			var mediaDevicesConstraints = {
+				audio: false,
+				video: {
+					mandatory: {
+						maxWidth: _this.parameters.sourceWidth,
+						maxHeight: _this.parameters.sourceHeight
+					}
+				}
+			}
+
+			devices.forEach(function(device) {
+				if( device.kind !== 'videoinput' )	return
+				mediaDevicesConstraints.video.optional = [{sourceId: device.deviceId}]
+			});
+
+			// OLD API
+			// it it finds the videoSource 'environment', modify constraints.video
+			// for (var i = 0; i != sourceInfos.length; ++i) {
+			//         var sourceInfo = sourceInfos[i];
+			//         if(sourceInfo.kind == "video" && sourceInfo.facing == "environment") {
+			//                 constraints.video.optional = [{sourceId: sourceInfo.id}]
+			//         }
+			// }
+
+			navigator.getUserMedia(mediaDevicesConstraints, function success(stream) {
+				// console.log('success', stream);
+				domElement.src = window.URL.createObjectURL(stream);
+				// to start the video, when it is possible to start it only on userevent. like in android
+				document.body.addEventListener('click', function(){
+					domElement.play();
+				})
+				domElement.play();
+
+				// wait until the video stream is ready
+				var interval = setInterval(function() {
+					if (!domElement.videoWidth)	return;
+					onReady()
+					clearInterval(interval)
+				}, 1000/50);
+			}, function(error) {
+				console.log("Can't access user media", error);
+				alert("Can't access user media :()");
+			});
+		}).catch(function(err) {
+			console.log(err.name + ": " + err.message);
+		});
+
 		console.log("artoolkit.api.js MediaStreamTrack.getSources: "+ JSON.stringify(navigator.getUserMedia, null, 4));
 		return video;
 	};

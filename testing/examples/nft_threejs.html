@@ -45,7 +45,7 @@ window.ARThreeOnLoad = function() {
 
 	ARController.getUserMediaThreeScene({
 		maxARVideoSize: 320,
-		cameraParam: 'Data/camera_para.dat',
+		cameraParam: 'Data/camera_para-iPhone 5 rear 640x480 1.0m.dat',
 		facingMode: 'environment',
 		width:640,
 		height:480,
@@ -195,16 +195,8 @@ window.ARThreeOnLoad = function() {
 };
 
 if (window.ARController && ARController.getUserMediaThreeScene) {
-	navigator.mediaDevices.enumerateDevices()
-			.then(function(devices) {
-				devices.forEach(function(device) {
-					console.log(device.kind + ": " + device.label +
-							" id = " + device.deviceId);
-					alert(device.kind + ": " + device.label +
-							" id = " + device.deviceId);
-				});
-			})
-	//ARThreeOnLoad();
+
+	ARThreeOnLoad();
 }
 </script>
 
