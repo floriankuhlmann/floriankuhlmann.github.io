@@ -40,6 +40,9 @@ html,body {
 
 window.ARThreeOnLoad = function() {
 
+
+
+
 	ARController.getUserMediaThreeScene({
 		maxARVideoSize: 320,
 		cameraParam: 'Data/camera_para.dat',
@@ -192,7 +195,16 @@ window.ARThreeOnLoad = function() {
 };
 
 if (window.ARController && ARController.getUserMediaThreeScene) {
-	ARThreeOnLoad();
+	navigator.mediaDevices.enumerateDevices()
+			.then(function(devices) {
+				devices.forEach(function(device) {
+					console.log(device.kind + ": " + device.label +
+							" id = " + device.deviceId);
+					alert(device.kind + ": " + device.label +
+							" id = " + device.deviceId);
+				});
+			})
+	//ARThreeOnLoad();
 }
 </script>
 
