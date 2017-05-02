@@ -79,8 +79,7 @@ html,body {
 			if (/Android|mobile|iPad|iPhone/i.test(navigator.userAgent)) {
 				renderer.setSize(window.innerWidth, (window.innerWidth / arController.videoWidth) * arController.videoHeight);
 			} else {
-				renderer.setSize(1024, 768);
-
+				renderer.setSize(arController.videoWidth, arController.videoHeight);
 				document.body.className += ' desktop';
 			}
 		}
