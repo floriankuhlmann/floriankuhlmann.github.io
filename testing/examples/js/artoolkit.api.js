@@ -1190,7 +1190,6 @@
 				onSuccess(video);
 			}
 		};
-		console.log("artoolkit.api.js 1193 configuation: "+ JSON.stringify(configuration, null, 4));
 		var readyToPlay = false;
 		var eventNames = [
 			'touchstart', 'touchend', 'touchmove', 'touchcancel',
@@ -1260,13 +1259,11 @@
 		//if ( false ) {
 		if ( navigator.mediaDevices || window.MediaStreamTrack) {
 			if (navigator.mediaDevices) {
-				console.log("artoolkit.api.js navigator.mediaDevices: "+ JSON.stringify(mediaDevicesConstraints, null, 4));
 				navigator.mediaDevices.getUserMedia({
 					audio: false,
 					video: mediaDevicesConstraints
 				}).then(success, onError); 
 			} else {
-				console.log("artoolkit.api.js MediaStreamTrack.getSources: "+ JSON.stringify(mediaDevicesConstraints, null, 4));
 				MediaStreamTrack.getSources(function(sources) {
 					var facingDir = mediaDevicesConstraints.facingMode;
 					if (facing && facing.exact) {
@@ -1346,7 +1343,6 @@
 			console.log(err.name + ": " + err.message);
 		});
 
-		console.log("artoolkit.api.js MediaStreamTrack.getSources: "+ JSON.stringify(navigator.getUserMedia, null, 4));
 		return video;
 	};
 

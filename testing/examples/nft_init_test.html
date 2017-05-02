@@ -24,10 +24,16 @@ cameraParam.onload = function() {
 	console.log('debugSetup');
 	arController.loadNFTMarker('DataNFT/freedom', function(markerId) {
 		console.log('Created NFT marker', arguments);
+		test(markerId);
 	});
 
 };
 cameraParam.load('Data/camera_para.dat');
+
+
+function test(markerId) {
+	console.log('Created markerId', markerId);
+}
 
 
 </script>

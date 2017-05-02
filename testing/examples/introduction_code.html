@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>introduction</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <script src="js/third_party/three.js/three.min.js"></script>
+    <script src="js/artoolkit.debug.js"></script>
+    <script src="js/artoolkit.api.js"></script>
+    <script src="js/artoolkit.three.js"></script>
+    <style>
+        html,body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            text-align: center;
+            overflow-x: hidden;
+        }
+        .portrait canvas {
+            transform-origin: 0 0;
+            transform: rotate(-90deg) translateX(-100%);
+        }
+        .desktop canvas {
+            transform: scale(-1, 1);
+        }
+    </style>
+
+</head>
+<body>
+
+<script>
+
+    // We’ll get a video from your device camera using the getUserMedia API.
+    // The simple way to getthis is to use a helper function in JSARToolKit5: ARController.getUserMedia(options).
+    // The onSuccess callback in the options object gets called with a ready-to-use video element.
+    var markerRoot;
+    var video = ARController.getUserMedia({
+        maxARVideoSize: 320, // do AR processing on scaled down video of this size
+        facing: "environment",
+        onSuccess: function(video) {
+            console.log('got video', video);
+        }
+    });
+
+    var arController = new ARController(video, 'Data/camera_para.dat');
+    arController.onload = function() {
+
+        console.log('ARController ready for use', arController);
+
+        arController.loadNFTMarker('DataNFT/freedom', function(markerId) {
+            markerRoot = arController.createThreeNFTMarker(markerId);
+            //markerRoot.add(sphere);
+            //arScene.scene.add(markerRoot);
+
+        });
+        console.log("markerRoot ", markerRoot);
+    };
+
+
+
+
+
+
+</script>
+
+</body>
+</html>
