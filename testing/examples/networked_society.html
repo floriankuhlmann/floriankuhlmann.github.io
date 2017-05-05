@@ -32,21 +32,40 @@ html,body {
 
 <script>
 
-window.ARThreeOnLoad = function() {
+	function ARThreeOnLoad() {
+		navigator
+				.mediaDevices
+				.enumerateDevices()
+				.then(function(devices) {
+					var device = devices.find(function(element) {
+						return element.label.indexOf('back') !== -1
+					})
+
+					var videoParams = {deviceId: device ? {exact: device.deviceId} : undefined}
+
+					cameraSuccess(videoParams);
+				})
+				.catch(function(err) {
+					alert(err.name + ": " + err.message);
+				})
+	}
+
+	function cameraSuccess(videoParams) {
+		ARController.getUserMediaThreeScene({
+			maxARVideoSize: 640,
+			cameraParam:    'Data/camera_para.dat',
+			deviceId:       videoParams.deviceId,
+			width:640,
+			height:480,
+			onSuccess:      createAR
+		})
+	}
 
 
 
-
-	ARController.getUserMediaThreeScene({
-		maxARVideoSize: 320,
-		cameraParam: 'Data/camera_para-iPhone 5 rear 640x480 1.0m.dat',
-		facingMode: 'environment',
-		width:640,
-		height:480,
-		onSuccess: function(arScene, arController, arCamera) {
+	function createAR(arScene, arController, arCameraParam) {
 
 		document.body.className = arController.orientation;
-
 		var renderer = new THREE.WebGLRenderer({antialias: true});
 		if (arController.orientation === 'portrait') {
 			var w = (window.innerWidth / arController.videoHeight) * arController.videoWidth;
@@ -57,13 +76,12 @@ window.ARThreeOnLoad = function() {
 			if (/Android|mobile|iPad|iPhone/i.test(navigator.userAgent)) {
 				renderer.setSize(window.innerWidth, (window.innerWidth / arController.videoWidth) * arController.videoHeight);
 			} else {
-				renderer.setSize(1024, 768);
+				renderer.domElement.style.width = '100%';
+				renderer.domElement.style.height = 'auto';
 
 				document.body.className += ' desktop';
 			}
 		}
-
-
 
 
 		document.body.insertBefore(renderer.domElement, document.body.firstChild);
@@ -183,11 +201,7 @@ window.ARThreeOnLoad = function() {
 
 		tick();
 
-	}});
-
-	delete window.ARThreeOnLoad;
-
-};
+	}
 
 if (window.ARController && ARController.getUserMediaThreeScene) {
 
